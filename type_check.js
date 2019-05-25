@@ -25,6 +25,7 @@ function type_check(){
       else if ((para).constructor === RegExp)  para_type = 'regexp'
       else if ((para).constructor === Error)   para_type = 'error'
       else if ((para).constructor === Symbol)  para_type = 'symbol'
+      else if (para instanceof HTMLElement)  para_type = 'HTMLElement'
 
       // of cause there is no real integer in js 
       if( exp_type === 'integer' 
@@ -45,3 +46,11 @@ function type_check(){
   }
 }
 
+// abriviation for querySelector
+function qs(s){
+  type_check(s, 'str')
+  const elem  = document.querySelector(s)
+  type_check(elem, 'HTMLElement')
+  return elem
+}
+ 
